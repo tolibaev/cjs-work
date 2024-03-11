@@ -35,12 +35,8 @@ export const arrayWithCssStylesWithoutNumbersValue = [
     abbreviation: 'color',
   },
   {
-    property: 'color',
-    abbreviation: '_color',
-  },
-  {
     property: 'text-wrap',
-    abbreviation: 'text',
+    abbreviation: 'text-w',
   },
   {
     property: 'vertical-align',

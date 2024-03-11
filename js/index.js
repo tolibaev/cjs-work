@@ -441,10 +441,29 @@ export function applyStyles(rootElement, options) {
       )
         setCssStyleInLocalStorage(`${property}: #${propertyValue}`);
 
-      if (abbr === 'g-flow' || abbr === 'flex-dir' || abbr === 'obj-pos' || abbr === 'bg-pos')
+      if (abbr === 'g-flow' || abbr === 'flex-dir' || abbr === 'obj-pos')
         setCssStyleInLocalStorage(`${property}: ${propertyValue.split('-').join(' ')}`);
+         if(abbr === 'bg-pos'){
+
+            propertyValue = propertyValue.split('-') 
+
+            if(propertyValue.length === 1){
+               const [value] = propertyValue
+               
+               
+               setCssStyleInLocalStorage(`${property}: ${value}${options.unit}`);
+               if(options.unit === 'rem')
+               setCssStyleInLocalStorage(`${property}: ${value / htmlFontSize}${options.unit}`);
+         }
+         if(propertyValue.length === 2){
+            const [valueX, valueY] = propertyValue
+               setCssStyleInLocalStorage(`${property}: ${valueX}${options.unit} ${valueY}${options.unit}`);
+               if(options.unit === 'rem')
+                  setCssStyleInLocalStorage(`${property}: ${valueX / htmlFontSize}${options.unit} ${valueY / htmlFontSize}${options.unit}`);
+            }
+         }
       // transition
-      if (abbr.includes('translate')) {
+      if (abbr.includes('transition')) {
         const transitionValues = propertyValue.split('-');
         const [prop, duration, timinFunction, delay] = transitionValues;
         const durationInMS = +duration / 1000;
