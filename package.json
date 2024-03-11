@@ -1,0 +1,19 @@
+{
+   "name": "cjs-work",
+   "version": "2.0.2",
+   "author": "Rinat",
+   "license": "ISC",
+   "main": "js/index.js",
+   "module": "js/index.js",
+   "type": "module",
+   "bin": {
+      "cjs go": "js/download.js"
+   },
+   "scripts": {
+      "build": "build"
+   },
+   "dependencies": {
+      "axios": "^1.6.7",
+      "request": "^2.88.2"
+   }
+}
