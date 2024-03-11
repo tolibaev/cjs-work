@@ -18,7 +18,7 @@ export function applyStyles(rootElement, options) {
   options.finalWidth ??= 320;
   options.containerPadding ??= 20;
   options.maxWidthContainer ??= 1600;
-  options.containerSize ??= options.containerSize = options.maxWidthContainer + options.containerPadding * 2;
+  options.containerSize ??= options.maxWidthContainer + options.containerPadding * 2;
 
   const wrapper = document.querySelector(rootElement);
   const elements = wrapper.querySelectorAll('[class]');
@@ -497,7 +497,7 @@ export function applyStyles(rootElement, options) {
           localStorage.setItem(
             className,
             `.${className}{${property}: ${options.containerSize / htmlFontSize}rem;margin: 0 auto;padding: 0 ${
-              options.containerPadding
+              options.containerPadding / htmlFontSize
             }rem}`
           );
         }
