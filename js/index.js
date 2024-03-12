@@ -427,9 +427,29 @@ export function applyStyles(rootElement, options) {
 
       localStorage.setItem(className, `.${className}{${elementStyle}}`);
 
-      if (abbr === 'mx') setCssStyleInLocalStorage(`${property}: 0 ${propertyValue}`);
+      if (abbr === 'mx'){
+        setCssStyleInLocalStorage(`${property}-left:${propertyValue}${options.unit};${property}-right:${propertyValue}${options.unit};`);
+        if(options.unit === 'rem')
+          setCssStyleInLocalStorage(`${property}-left:${propertyValue / htmlFontSize}rem;${property}-right:${propertyValue / htmlFontSize}rem;`);
+      } 
 
-      if (abbr === 'my') setCssStyleInLocalStorage(`${property}: ${propertyValue} 0`);
+      if (abbr === 'my'){
+        setCssStyleInLocalStorage(`${property}-top:${propertyValue}${options.unit};${property}-bottom:${propertyValue}${options.unit};`);
+        if(options.unit === 'rem')
+          setCssStyleInLocalStorage(`${property}-top:${propertyValue / htmlFontSize}rem;${property}-bottom:${propertyValue / htmlFontSize}rem;`);
+      } 
+
+      if (abbr === 'px'){
+        setCssStyleInLocalStorage(`${property}-left:${propertyValue}${options.unit};${property}-right:${propertyValue}${options.unit};`);
+        if(options.unit === 'rem')
+          setCssStyleInLocalStorage(`${property}-left:${propertyValue / htmlFontSize}rem;${property}-right:${propertyValue / htmlFontSize}rem;`);
+      } 
+
+      if (abbr === 'py'){
+        setCssStyleInLocalStorage(`${property}-top:${propertyValue}${options.unit};${property}-bottom:${propertyValue}${options.unit};`);
+        if(options.unit === 'rem')
+          setCssStyleInLocalStorage(`${property}-top:${propertyValue / htmlFontSize}rem;${property}-bottom:${propertyValue / htmlFontSize}rem;`);
+      } 
 
       if (
         abbr === 'color' ||
@@ -443,7 +463,7 @@ export function applyStyles(rootElement, options) {
 
       if (abbr === 'g-flow' || abbr === 'flex-dir' || abbr === 'obj-pos')
         setCssStyleInLocalStorage(`${property}: ${propertyValue.split('-').join(' ')}`);
-         if(abbr === 'bg-pos'){
+      if(abbr === 'bg-pos'){
 
             propertyValue = propertyValue.split('-') 
 
@@ -461,7 +481,14 @@ export function applyStyles(rootElement, options) {
                if(options.unit === 'rem')
                   setCssStyleInLocalStorage(`${property}: ${valueX / htmlFontSize}${options.unit} ${valueY / htmlFontSize}${options.unit}`);
             }
-         }
+      }
+      if(abbr === 'border'){
+        const [borderWidth, borderStyle, borderColor] = propertyValue.split('-')
+
+        setCssStyleInLocalStorage(`${property}: ${borderWidth}${options.unit} ${borderStyle} #${borderColor}`);
+        if(options.unit === 'rem')
+          setCssStyleInLocalStorage(`${property}: ${borderWidth / htmlFontSize}rem ${borderStyle} #${borderColor}`);
+      }
       // transition
       if (abbr.includes('transition')) {
         const transitionValues = propertyValue.split('-');

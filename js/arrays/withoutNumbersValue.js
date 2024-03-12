@@ -64,6 +64,14 @@ export const arrayWithCssStylesWithoutNumbersValue = [
     property: 'margin',
     abbreviation: 'my',
   },
+  {
+    property: 'padding',
+    abbreviation: 'px',
+  },
+  {
+    property: 'padding',
+    abbreviation: 'py',
+  },
   //   flex
   {
     property: 'flex-direction',
@@ -241,6 +249,10 @@ export const arrayWithCssStylesWithoutNumbersValue = [
     abbreviation: 'bg-size',
   },
   //  border
+  {
+    property: 'border',
+    abbreviation: 'border',
+  },
   {
     property: 'border-color',
     abbreviation: 'bor-color',
