@@ -356,12 +356,16 @@ export function applyStyles(rootElement, options) {
            if (key === 'focus') focusStyles = storageVariable;
            if (key === 'focusVisible') focusVisibleStyles = storageVariable;
            if (key === 'visited') visitedStyles = storageVariable;
-           if (key === 'placegolder') placeholderStyles = storageVariable;
+           if (key === 'placeholder') placeholderStyles = storageVariable;
  
            if (key === 'focusVisible') key = 'focus-visible';
  
-           if (!key.includes('maxW') && !key.includes('minW') && !key.includes('maxH') && !key.includes('minH')) {
+           if (!key.includes('maxW') && !key.includes('minW') && !key.includes('maxH') && !key.includes('minH') && key.includes('hover')) {
              const pseudoClassMediaQuery = `@media (any-hover: hover) {.${firstClassName}:${key}{${storageVariable}}}`;
+             localStorage.setItem(`.${firstClassName}:${key}`, pseudoClassMediaQuery);
+           }
+           if(key.includes('active') || key.includes('focus') || key.includes('focusVisible') || key.includes('visited') || key.includes('placeholder')){
+            const pseudoClassMediaQuery = `.${firstClassName}:${key}{${storageVariable}}`;
              localStorage.setItem(`.${firstClassName}:${key}`, pseudoClassMediaQuery);
            }
  
