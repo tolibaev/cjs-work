@@ -30,6 +30,7 @@ export function applyStyles(rootElement, options) {
   let focusStyles = '';
   let focusVisibleStyles = '';
   let visitedStyles = '';
+  let placeholderStyles = '';
   let maxWidthMediaQuaries = '';
   let minWidthMediaQuaries = '';
   let maxHeightMediaQuaries = '';
@@ -81,6 +82,7 @@ export function applyStyles(rootElement, options) {
          if (key === 'focus') setPseudoClasses(key, focusStyles);
          if (key === 'focusVisible') setPseudoClasses(key, focusVisibleStyles);
          if (key === 'visited') setPseudoClasses(key, visitedStyles);
+         if (key === 'placeholder') setPseudoClasses(key, visitedStyles);
          if (key.includes('maxW')) setPseudoClasses(key, maxWidthMediaQuaries);
          if (key.includes('minW')) setPseudoClasses(key, minWidthMediaQuaries);
          if (key.includes('maxH')) setPseudoClasses(key, maxHeightMediaQuaries);
@@ -354,6 +356,7 @@ export function applyStyles(rootElement, options) {
            if (key === 'focus') focusStyles = storageVariable;
            if (key === 'focusVisible') focusVisibleStyles = storageVariable;
            if (key === 'visited') visitedStyles = storageVariable;
+           if (key === 'placegolder') placeholderStyles = storageVariable;
  
            if (key === 'focusVisible') key = 'focus-visible';
  
@@ -404,6 +407,7 @@ export function applyStyles(rootElement, options) {
        focusStyles = '';
        focusVisibleStyles = '';
        visitedStyles = '';
+       placeholderStyles = '';
    }
   }
 
