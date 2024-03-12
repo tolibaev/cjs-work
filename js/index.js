@@ -364,8 +364,12 @@ export function applyStyles(rootElement, options) {
              const pseudoClassMediaQuery = `@media (any-hover: hover) {.${firstClassName}:${key}{${storageVariable}}}`;
              localStorage.setItem(`.${firstClassName}:${key}`, pseudoClassMediaQuery);
            }
-           if(key.includes('active') || key.includes('focus') || key.includes('focusVisible') || key.includes('visited') || key.includes('placeholder')){
+           if(key.includes('active') || key.includes('focus') || key.includes('focusVisible') || key.includes('visited')){
             const pseudoClassMediaQuery = `.${firstClassName}:${key}{${storageVariable}}`;
+             localStorage.setItem(`.${firstClassName}:${key}`, pseudoClassMediaQuery);
+           }
+           if(key.includes('placeholder')){
+            const pseudoClassMediaQuery = `.${firstClassName}::${key}{${storageVariable}}`;
              localStorage.setItem(`.${firstClassName}:${key}`, pseudoClassMediaQuery);
            }
  
