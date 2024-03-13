@@ -505,7 +505,7 @@ export function applyStyles(rootElement, options) {
                   setCssStyleInLocalStorage(`${property}: ${valueX / htmlFontSize}${options.unit} ${valueY / htmlFontSize}${options.unit}`);
             }
       }
-      if(abbr === 'border'){
+      if(abbr === 'bor' || abbr === 'bor-top' || abbr === 'bor-right' || abbr === 'bor-left' || abbr === 'bor-bottom'){
         const [borderWidth, borderStyle, borderColor] = propertyValue.split('-')
 
         setCssStyleInLocalStorage(`${property}: ${borderWidth}${options.unit} ${borderStyle} #${borderColor}`);

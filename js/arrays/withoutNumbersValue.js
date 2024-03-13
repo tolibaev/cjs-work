@@ -251,7 +251,23 @@ export const arrayWithCssStylesWithoutNumbersValue = [
   //  border
   {
     property: 'border',
-    abbreviation: 'border',
+    abbreviation: 'bor',
+  },
+  {
+    property: 'border-left',
+    abbreviation: 'bor-left',
+  },
+  {
+    property: 'border-right',
+    abbreviation: 'bor-right',
+  },
+  {
+    property: 'border-top',
+    abbreviation: 'bor-top',
+  },
+  {
+    property: 'border-bottom',
+    abbreviation: 'bor-bottom',
   },
   {
     property: 'border-color',
