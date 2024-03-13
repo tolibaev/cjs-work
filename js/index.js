@@ -225,6 +225,19 @@ export function applyStyles(rootElement, options) {
              }
              storageVariable += `${objectWithPropsAndAbbr.property}: ${style};`;
            }
+
+           if (objectWithPropsAndAbbr.abbreviation === 'radius') {
+            const values = removeLetters(propertyValue.split('-'));
+            let [topLeft, topRight, bottomRight, bottomLeft] = values;
+            style = `${topLeft}${options.unit} ${topRight}${options.unit} ${bottomRight}${options.unit} ${bottomLeft}${options.unit}`;
+            if (options.unit === 'rem') {
+              style = `${topLeft / htmlFontSize}rem
+               ${topRight / htmlFontSize}rem
+               ${bottomRight / htmlFontSize}rem
+               ${bottomLeft / htmlFontSize}rem`;
+            }
+            storageVariable += `${objectWithPropsAndAbbr.property}: ${style};`;
+          }
  
            if (
              objectWithPropsAndAbbr.abbreviation === 't-shadow' ||
@@ -296,7 +309,6 @@ export function applyStyles(rootElement, options) {
              objectWithPropsAndAbbr.abbreviation === 'col-gap' ||
              objectWithPropsAndAbbr.abbreviation === 'r-gap' ||
              objectWithPropsAndAbbr.abbreviation === 'basis' ||
-             objectWithPropsAndAbbr.abbreviation === 'radius' ||
              objectWithPropsAndAbbr.abbreviation === 'bor-width' ||
              objectWithPropsAndAbbr.abbreviation === 'bor-left-width' ||
              objectWithPropsAndAbbr.abbreviation === 'bor-right-width' ||
@@ -313,6 +325,9 @@ export function applyStyles(rootElement, options) {
                if (options.unit === 'rem') style = `${values[0] / htmlFontSize}rem`;
              }
              storageVariable += `${objectWithPropsAndAbbr.property}: ${style};`;
+           }
+           if(objectWithPropsAndAbbr.abbreviation === 'radius'){
+
            }
  
            const regex = /^bor-sp/;
@@ -838,6 +853,22 @@ export function applyStyles(rootElement, options) {
 
         elementStyle = `${property}: ${propertyValue}}`;
         if (abbreviationForProperty === 'd-shadow') elementStyle = `${property}: drop-shadow(${propertyValue})}`;
+
+        localStorage.setItem(className, `.${className}{${elementStyle}}`);
+      }
+      if (abbr === 'radius') {
+        let [topLeft, topRight, bottomRight, bottomLeft] = filteredValues;
+
+
+        propertyValue = `${topLeft}${options.unit} ${topRight}${options.unit} ${bottomRight}${options.unit} ${bottomLeft}${options.unit}`;
+        if (options.unit === 'rem') {
+          propertyValue = `${topLeft / htmlFontSize}rem
+			${topRight / htmlFontSize}rem
+			${bottomRight / htmlFontSize}rem
+			${bottomLeft / htmlFontSize}rem`;
+        }
+
+        elementStyle = `${property}: ${propertyValue}}`;
 
         localStorage.setItem(className, `.${className}{${elementStyle}}`);
       }
