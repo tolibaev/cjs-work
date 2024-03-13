@@ -308,7 +308,7 @@ export function applyStyles(rootElement, options) {
              const values = removeLetters(propertyValue.split('-'));
              const positiveRelativeUnits = /(vw|vh|dvw|dvh|%)$/;
              style = `${values[0]}`;
-             if (!positiveRelativeUnits.test(values[0])) {
+             if (!positiveRelativeUnits.test(style)) {
                style = `${values[0]}${options.unit}`;
                if (options.unit === 'rem') style = `${values[0] / htmlFontSize}rem`;
              }
@@ -858,8 +858,8 @@ export function applyStyles(rootElement, options) {
   }
 
   function removeLetters(values) {
-    const positiveRelativeValues = /(vw|vh|dvw|dvh|%)$/;
-    const negativeRelativeValues = /^n.*(?:vw|vh|dvw|dvh|%)$/;
+    const positiveRelativeValues = /(vw|vh|dvw|dvh|p)$/;
+    const negativeRelativeValues = /^n.*(?:vw|vh|dvw|dvh|p)$/;
     const filteredValues = values.filter(value => {
       const negativeValues = /^n\d+$/;
       const positiveValues = /.*/;
@@ -876,6 +876,7 @@ export function applyStyles(rootElement, options) {
 
     const newValues = filteredValues.map(value => {
       if (value.match(/^n/)) value = `-${value.slice(1)}`;
+      if(value.match(/p$/)) value = `${value.slice(0, -1)}%`;
       return value;
     });
     return newValues;
