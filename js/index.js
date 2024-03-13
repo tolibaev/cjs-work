@@ -646,7 +646,13 @@ export function applyStyles(rootElement, options) {
         if (unit === 'em') propertyValue = `${firstValue}em`;
 
         if (abbr === 'translate') {
+          const values = removePropertyName(className, 'translate').split('-')
+
+          const filteredValues = removeLetters(values)
+          
           propertyValue = `${firstValue}px ${secendValue}px`;
+          
+
           if (unit === 'rem') propertyValue = `${firstValue / htmlFontSize}rem ${secendValue / htmlFontSize}rem`;
 
           if (unit === 'em') propertyValue = `${firstValue}em ${secendValue}em`;
