@@ -23,18 +23,20 @@ export function applyStyles(rootElement, options) {
   const wrapper = document.querySelector(rootElement);
   const elements = wrapper.querySelectorAll('[class]');
 
-  let className = '';
-  let fileContent = '';
-  let hoverStyles = '';
-  let activeStyles = '';
-  let focusStyles = '';
-  let focusVisibleStyles = '';
-  let visitedStyles = '';
-  let placeholderStyles = '';
-  let maxWidthMediaQuaries = '';
-  let minWidthMediaQuaries = '';
-  let maxHeightMediaQuaries = '';
-  let minHeightMediaQuaries = '';
+  let className = '',
+  fileContent = '',
+  hoverStyles = '',
+  activeStyles = '',
+  focusStyles = '',
+  focusVisibleStyles = '',
+  visitedStyles = '',
+  placeholderStyles = '',
+  maxWidthMediaQuaries = '',
+  minWidthMediaQuaries = '',
+  maxHeightMediaQuaries = '',
+  minHeightMediaQuaries = '',
+  afterStyles = '',
+  beforeStyles = '';
 
    let mediaQueries = '';
 
@@ -83,6 +85,8 @@ export function applyStyles(rootElement, options) {
          if (key === 'focusVisible') setPseudoClasses(key, focusVisibleStyles);
          if (key === 'visited') setPseudoClasses(key, visitedStyles);
          if (key === 'placeholder') setPseudoClasses(key, visitedStyles);
+         if (key === 'after') setPseudoClasses(key, afterStyles);
+         if (key === 'before') setPseudoClasses(key, beforeStyles);
          if (key.includes('maxW')) setPseudoClasses(key, maxWidthMediaQuaries);
          if (key.includes('minW')) setPseudoClasses(key, minWidthMediaQuaries);
          if (key.includes('maxH')) setPseudoClasses(key, maxHeightMediaQuaries);
@@ -360,7 +364,7 @@ export function applyStyles(rootElement, options) {
  
            if (key === 'focusVisible') key = 'focus-visible';
  
-           if (!key.includes('maxW') && !key.includes('minW') && !key.includes('maxH') && !key.includes('minH') && key.includes('hover')) {
+           if (key.includes('hover')) {
              const pseudoClassMediaQuery = `@media (any-hover: hover) {.${firstClassName}:${key}{${storageVariable}}}`;
              localStorage.setItem(`.${firstClassName}:${key}`, pseudoClassMediaQuery);
            }
@@ -372,6 +376,11 @@ export function applyStyles(rootElement, options) {
             const pseudoClassMediaQuery = `.${firstClassName}::${key}{${storageVariable}}`;
              localStorage.setItem(`.${firstClassName}:${key}`, pseudoClassMediaQuery);
            }
+           if(key.includes('after') || key.includes('before')){
+            const pseudoClassMediaQuery = `.${firstClassName}::${key}{content:'';${storageVariable}}`;
+             localStorage.setItem(`.${firstClassName}:${key}`, pseudoClassMediaQuery);
+           }
+
  
            if (key.includes('maxW')) {
              const queriesValue = key.replace(/[^0-9]/g, '');
@@ -416,6 +425,8 @@ export function applyStyles(rootElement, options) {
        focusVisibleStyles = '';
        visitedStyles = '';
        placeholderStyles = '';
+       afterStyles = '';
+       beforeStyles = '';
    }
   }
 
