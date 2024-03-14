@@ -79,4 +79,29 @@ export const arrayWidthDisplayProprties = [
     property: 'display: none',
     abbreviation: 'none',
   },
+  // exceptions
+  {
+    property: 'justify-content: center;align-items: center;',
+    abbreviation: 'f-center',
+  },
+  {
+    property: 'position: static',
+    abbreviation: 'static',
+  },
+  {
+    property: 'position: relative',
+    abbreviation: 'relative',
+  },
+  {
+    property: 'position: absolute',
+    abbreviation: 'absolute',
+  },
+  {
+    property: 'position: fixed',
+    abbreviation: 'fixed',
+  },
+  {
+    property: 'position: sticky',
+    abbreviation: 'sticky',
+  },
 ];
