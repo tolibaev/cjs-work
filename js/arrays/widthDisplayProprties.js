@@ -94,7 +94,7 @@ export const arrayWidthDisplayProprties = [
   },
   {
     property: 'position: absolute',
-    abbreviation: 'absolute',
+    abbreviation: 'abs',
   },
   {
     property: 'position: fixed',
