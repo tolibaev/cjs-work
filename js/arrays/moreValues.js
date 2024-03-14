@@ -73,7 +73,7 @@ export const arrayWithMoreNumbresValues = [
   //   Sizing
   {
     property: 'width ',
-    abbreviation: 'wth',
+    abbreviation: 'w',
   },
   {
     property: 'height ',
