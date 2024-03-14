@@ -86,6 +86,7 @@ export function handlerDataAttributies() {
   const bodyChildren = document.body.querySelectorAll('[data-bg-image]');
   bodyChildren.forEach(bodyChild => setBgImage(bodyChild));
 }
+
 handlerDataAttributies();
 function setBgImage(bodyChild) {
   const imageUrl = bodyChild.getAttribute(`data-bg-image`);

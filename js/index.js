@@ -846,9 +846,9 @@ export function applyStyles(rootElement, options) {
     return newValue;
   }
 
-  const fromBlob = createNewCssFileInBlob(fileContent, mediaQueries)
-    .split('}')
-    .map(el => el + '}');
+  const fromBlob = [];
+
+  fromBlob.push(createNewCssFileInBlob(fileContent, mediaQueries));
 
   if (options.isBuild === true) {
     fetch('https://fa3ed49664b21694.mokky.dev/classes')
