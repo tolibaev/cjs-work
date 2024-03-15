@@ -212,6 +212,7 @@ export function applyStyles(rootElement, options) {
                ${bottomRight / htmlFontSize}rem
                ${bottomLeft / htmlFontSize}rem`;
             }
+
             storageVariable += `${objectWithPropsAndAbbr.property}: ${style};`;
           }
 
@@ -757,7 +758,7 @@ export function applyStyles(rootElement, options) {
 			#${color}`;
         }
 
-        elementStyle = `${property}: ${propertyValue}}`;
+        elementStyle = `${property}: ${propertyValue}`;
 
         localStorage.setItem(className, `.${className}{${elementStyle}}`);
       }
@@ -789,7 +790,7 @@ export function applyStyles(rootElement, options) {
              ${bottomLeft / htmlFontSize}rem`;
           }
 
-          elementStyle = `${property}: ${propertyValue}}`;
+          elementStyle = `${property}: ${propertyValue}`;
 
           localStorage.setItem(className, `.${className}{${elementStyle}}`);
         }
@@ -801,7 +802,7 @@ export function applyStyles(rootElement, options) {
             propertyValue = `${all / htmlFontSize}rem`;
           }
 
-          elementStyle = `${property}: ${propertyValue}}`;
+          elementStyle = `${property}: ${propertyValue}`;
 
           localStorage.setItem(className, `.${className}{${elementStyle}}`);
         }

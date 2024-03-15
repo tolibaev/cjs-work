@@ -16,8 +16,6 @@ export function createNewCssFileInBlob(fileContent, mediaQueries) {
 
   fileContent += mediaQueries;
 
-  filterDoubleBraces(fileContent);
-
   // Создания нового CSS-файла
   fileContent = minifyCSS(fileContent);
   const file = new File([fileContent], 'csj.css', {type: 'text/css'});
@@ -75,11 +73,6 @@ function removeDuplicateProperties(properties) {
   }
 
   return uniqueProperties.trim();
-}
-
-function filterDoubleBraces(css) {
-  const regex = /(\}\})/g;
-  return css.replace(regex, '}');
 }
 
 export function handlerDataAttributies() {
